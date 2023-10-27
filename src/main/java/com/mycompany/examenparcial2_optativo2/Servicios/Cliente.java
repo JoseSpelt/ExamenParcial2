@@ -15,8 +15,8 @@ public class Cliente {
     public void registrarCliente(Clientes cliente){
             clienteDB.registrarCliente(cliente);
     }
-    public String modificarCliente(Clientes cliente){
-            return clienteDB.modificarCLiente(cliente);
+    public void modificarCliente(Clientes cliente){
+           clienteDB.modificarCLiente(cliente);
     }
 
 
@@ -24,8 +24,11 @@ public class Cliente {
         return  clienteDB.consultarClientes();
     }
     
-    public String eliminarCliente(int cliente){
-        return clienteDB.eliminarCliente(cliente);
+    public Clientes consultarClientePorId(int idCliente) {
+    return clienteDB.consultarClientePorId(idCliente);
+}
+    public void eliminarCliente(int cliente){
+        clienteDB.eliminarCliente(cliente);
     }
 
 

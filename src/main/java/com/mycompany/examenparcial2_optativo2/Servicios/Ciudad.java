@@ -21,11 +21,8 @@ public class Ciudad {
         }
     }
 
-    public String modificarCiudad(Ciudades ciudad){
-        if(validarDatos(ciudad)){
-            return ciudadDB.modificarCiudad(ciudad);
-        }
-        return "Ocurrió algún error, contactese con el Administrador";
+    public void modificarCiudad(Ciudades ciudad){
+           ciudadDB.modificarCiudad(ciudad);
     }
 
 
@@ -36,6 +33,15 @@ public class Ciudad {
     public String eliminarCiudad(int ciudad){
         return ciudadDB.eliminarCiudad(ciudad);
     }
+    public Ciudades consultarCiudadPorId(int idCiudad) {
+    Ciudades ciudad = ciudadDB.consultarCiudadPorId(idCiudad);
+    
+    if (ciudad == null) {
+        JOptionPane.showMessageDialog(null, "No se encontró ninguna ciudad con el ID " + idCiudad, "Error", JOptionPane.INFORMATION_MESSAGE);
+    }
+    
+    return ciudad;
+}
 
     private boolean validarDatos(Ciudades ciudad) {
         try {

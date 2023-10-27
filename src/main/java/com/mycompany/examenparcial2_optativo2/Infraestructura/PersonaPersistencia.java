@@ -92,7 +92,57 @@ public class PersonaPersistencia {
 
     return personas;
 }
-    public String eliminarPersona(int persona) {
+       public Personas consultarPersonaPorId(int id) {
+        try {
+            conexion.setQuerySQL(conexion.conexionDB().createStatement());
+            conexion.setResultadoQuery(conexion.getQuerySQL().executeQuery("SELECT * FROM personas WHERE id_persona = " + id));
+
+            if (conexion.getResultadoQuery().next()) {
+                Personas persona = new Personas();
+                persona.id_persona = conexion.getResultadoQuery().getInt("id_persona");
+                persona.id_ciudad = conexion.getResultadoQuery().getInt("id_ciudad");
+                persona.Nombre = conexion.getResultadoQuery().getString("nombre");
+                persona.Apellido = conexion.getResultadoQuery().getString("apellido");
+                persona.TipoDocumento = conexion.getResultadoQuery().getString("tipo_documento");
+                persona.NroDocumento = conexion.getResultadoQuery().getString("nro_documento");
+                persona.Direccion = conexion.getResultadoQuery().getString("direccion");
+                persona.Celular = conexion.getResultadoQuery().getString("celular");
+                persona.Email = conexion.getResultadoQuery().getString("email");
+                persona.estado = conexion.getResultadoQuery().getString("estado");
+                return persona;
+            } else {
+                return null; 
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+           public Personas consultarPersonaPorDocumento(int documento) {
+        try {
+            conexion.setQuerySQL(conexion.conexionDB().createStatement());
+            conexion.setResultadoQuery(conexion.getQuerySQL().executeQuery("SELECT * FROM personas WHERE nro_documento = '" + documento + "'"));
+
+            if (conexion.getResultadoQuery().next()) {
+                Personas persona = new Personas();
+                persona.id_persona = conexion.getResultadoQuery().getInt("id_persona");
+                persona.id_ciudad = conexion.getResultadoQuery().getInt("id_ciudad");
+                persona.Nombre = conexion.getResultadoQuery().getString("nombre");
+                persona.Apellido = conexion.getResultadoQuery().getString("apellido");
+                persona.TipoDocumento = conexion.getResultadoQuery().getString("tipo_documento");
+                persona.NroDocumento = conexion.getResultadoQuery().getString("nro_documento");
+                persona.Direccion = conexion.getResultadoQuery().getString("direccion");
+                persona.Celular = conexion.getResultadoQuery().getString("celular");
+                persona.Email = conexion.getResultadoQuery().getString("email");
+                persona.estado = conexion.getResultadoQuery().getString("estado");
+                return persona;
+            } else {
+                return null; 
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public void eliminarPersona(int persona) {
     try {
         conexion.setQuerySQL(conexion.conexionDB().createStatement());
 
@@ -101,9 +151,9 @@ public class PersonaPersistencia {
         conexion.conexionDB().close();
 
         if (rowCount > 0) {
-            return "La persona con ID " + persona + " ha sido eliminada correctamente.";
+            JOptionPane.showMessageDialog(null, "La persona ha sido eliminada con éxito.");
         } else {
-            return "No se encontró ninguna persona con ID " + persona+ ". No se realizó ninguna eliminación.";
+            JOptionPane.showMessageDialog(null, "Ha ocurrido un error.");
         }
     } catch (SQLException e) {
         throw new RuntimeException(e);

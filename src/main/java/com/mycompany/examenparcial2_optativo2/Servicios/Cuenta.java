@@ -15,17 +15,20 @@ public class Cuenta {
     public void registrarCuenta(Cuentas cuenta){
             cuentaDB.registrarCuenta(cuenta);  
     }
-    public String modificarCuenta(Cuentas cuenta){
-            return cuentaDB.modificarCuenta(cuenta);
+    public void modificarCuenta(Cuentas cuenta){
+           cuentaDB.modificarCuenta(cuenta);
     }
 
 
     public List<Cuentas> consultarCuentas(){
         return  cuentaDB.consultarCuentas();
     }
+    public Cuentas consultarCuentaPorId(int idCuenta) {
+    return cuentaDB.consultarCuentaPorId(idCuenta);
+}
     
-    public String eliminarCuenta(int cuenta){
-        return cuentaDB.eliminarCuenta(cuenta);
+    public void eliminarCuenta(int cuenta){
+        cuentaDB.eliminarCuenta(cuenta);
     }
 
 }

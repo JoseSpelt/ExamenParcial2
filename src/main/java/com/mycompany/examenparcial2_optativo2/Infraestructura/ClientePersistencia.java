@@ -35,17 +35,17 @@ public class ClientePersistencia {
         }
     }
 
-    public String modificarCLiente(Clientes cliente){
+    public void modificarCLiente(Clientes cliente){
 
         try {
             conexion.setQuerySQL(conexion.conexionDB().createStatement());
             boolean execute = conexion.getQuerySQL().execute("UPDATE cliente SET " +
                     "id_persona = '" + cliente.id_persona + "'," +
                     "fecha_ingreso = '" + cliente.FechaIngreso + "'," +
-                    "calificacion = '" +
-                    "estado = '" + cliente.estado + "' Where cleinte.id_cliente = " + cliente.id_cliente);
+                    "calificacion = '" + cliente.Calificacion +  "'," +
+                    "estado = '" + cliente.estado + "' Where id_cliente = " + cliente.id_cliente);
             conexion.conexionDB().close();
-            return "Los datos del cliente fueron modificados correctamente!!!";
+            JOptionPane.showMessageDialog(null, "El cliente ha sido actualizada con éxito.");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -75,7 +75,28 @@ public class ClientePersistencia {
 
     return clientes;
 }
-    public String eliminarCliente(int cliente) {
+    public Clientes consultarClientePorId(int idCliente) {
+    try {
+        conexion.setQuerySQL(conexion.conexionDB().createStatement());
+        conexion.setResultadoQuery(conexion.getQuerySQL().executeQuery("SELECT * FROM cliente WHERE id_cliente = " + idCliente));
+
+        if (conexion.getResultadoQuery().next()) {
+            Clientes cliente = new Clientes();
+            cliente.id_cliente = conexion.getResultadoQuery().getInt("id_cliente");
+            cliente.id_persona = conexion.getResultadoQuery().getInt("id_persona");
+            cliente.FechaIngreso = conexion.getResultadoQuery().getString("fecha_ingreso");
+            cliente.Calificacion = conexion.getResultadoQuery().getString("calificacion");
+            cliente.estado = conexion.getResultadoQuery().getString("estado");
+
+            return cliente;
+        } else {
+            return null;
+        }
+    } catch (SQLException e) {
+        throw new RuntimeException(e);
+    }
+}
+    public void eliminarCliente(int cliente) {
     try {
         conexion.setQuerySQL(conexion.conexionDB().createStatement());
 
@@ -84,9 +105,9 @@ public class ClientePersistencia {
         conexion.conexionDB().close();
 
         if (rowCount > 0) {
-            return "El cliente con ID " + cliente + " ha sido eliminada correctamente.";
+            JOptionPane.showMessageDialog(null, "El cliente ha sido eliminada con éxito.");
         } else {
-            return "No se encontró ningun cliente con ID " + cliente + ". No se realizó ninguna eliminación.";
+            JOptionPane.showMessageDialog(null, "Ha ocurrido un error.");
         }
     } catch (SQLException e) {
         throw new RuntimeException(e);

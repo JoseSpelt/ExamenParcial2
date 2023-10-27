@@ -26,6 +26,7 @@ public class Persona {
     public String modificarPersona(Personas persona){
         if(validarDatos(persona)){
             personasDB.modificarPersona(persona);
+            JOptionPane.showMessageDialog(null, "La persona ha sido actualizada con éxito.");
         }
         return "Ocurrió algún error, contactese con el Administrador";
     }
@@ -34,9 +35,14 @@ public class Persona {
     public List<Personas> consultarPersona(){
         return  personasDB.consultarPersonas();
     }
-    
-    public String eliminarPersona(int persona){
-        return personasDB.eliminarPersona(persona);
+    public Personas consultarPersonaPorId(int id) {
+        return personasDB.consultarPersonaPorId(id);
+    }
+    public Personas consultarPersonaPorDocumento(int documento) {
+        return personasDB.consultarPersonaPorDocumento(documento);
+    }
+    public void eliminarPersona(int persona){
+         personasDB.eliminarPersona(persona);
     }
 
     private boolean validarDatos(Personas persona) {

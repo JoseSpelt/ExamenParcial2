@@ -47,24 +47,24 @@ public class CuentaPersistencia {
         }
     }
 
-    public String modificarCuenta(Cuentas cuenta){
+    public void modificarCuenta(Cuentas cuenta){
 
         try {
             conexion.setQuerySQL(conexion.conexionDB().createStatement());
             boolean execute = conexion.getQuerySQL().execute("UPDATE cuentas SET " +
                     "id_cliente = '" + cuenta.id_cliente + "'," +
                     "nro_cuenta = '" + cuenta.NumeroCuenta + "'," +
-                    "fecha_alta = '" + cuenta.FechaAlta +
-                    "tipo_cuenta = '" + cuenta.TipoCuenta +
-                    "estado = '" + cuenta.estado +
-                    "saldo = '" + cuenta.Saldo +
-                    "nro_contrato = '" + cuenta.NumeroContrato +
-                    "costo_mantenimiento = '" + cuenta.CostoMantenimiento +
-                    "prom_acreditacion = '" + cuenta.PromedioAcreditacion +
-                    "moneda = '" + cuenta.Moneda+
-                    "' Where cuenta.id_cuenta = " + cuenta.id_cuenta);
+                    "fecha_alta = '" + cuenta.FechaAlta + "'," +
+                    "tipo_cuenta = '" + cuenta.TipoCuenta + "'," +
+                    "estado = '" + cuenta.estado + "'," +
+                    "saldo = '" + cuenta.Saldo + "'," +
+                    "nro_contrato = '" + cuenta.NumeroContrato + "'," +
+                    "costo_mantenimiento = '" + cuenta.CostoMantenimiento + "'," + 
+                    "prom_acreditacion = '" + cuenta.PromedioAcreditacion + "'," +
+                    "moneda = '" + cuenta.Moneda + "' " +
+                    "WHERE id_cuenta = " + cuenta.id_cuenta);
             conexion.conexionDB().close();
-            return "Los datos de la cuenta fueron modificads correctamente!!!";
+            JOptionPane.showMessageDialog(null, "La persona ha sido actualizada con éxito.");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -99,7 +99,33 @@ public class CuentaPersistencia {
 
     return cuentas;
 }
-    public String eliminarCuenta(int cuenta) {
+    public Cuentas consultarCuentaPorId(int idCuenta) {
+    try {
+        conexion.setQuerySQL(conexion.conexionDB().createStatement());
+        conexion.setResultadoQuery(conexion.getQuerySQL().executeQuery("SELECT * FROM cuentas WHERE id_cuenta = " + idCuenta));
+
+        if (conexion.getResultadoQuery().next()) {
+            Cuentas cuenta = new Cuentas();
+            cuenta.id_cuenta = conexion.getResultadoQuery().getInt("id_cuenta");
+            cuenta.id_cliente = conexion.getResultadoQuery().getInt("id_cliente");
+            cuenta.NumeroCuenta = conexion.getResultadoQuery().getString("nro_cuenta");
+            cuenta.FechaAlta = conexion.getResultadoQuery().getString("fecha_alta");
+            cuenta.TipoCuenta = conexion.getResultadoQuery().getString("tipo_cuenta");
+            cuenta.estado = conexion.getResultadoQuery().getString("estado");
+            cuenta.Saldo = conexion.getResultadoQuery().getString("saldo");
+            cuenta.NumeroContrato = conexion.getResultadoQuery().getString("nro_contrato");
+            cuenta.CostoMantenimiento = conexion.getResultadoQuery().getString("costo_mantenimiento");
+            cuenta.PromedioAcreditacion = conexion.getResultadoQuery().getString("prom_acreditacion");
+            cuenta.Moneda = conexion.getResultadoQuery().getString("moneda");
+            return cuenta;
+        } else {
+            return null; 
+        }
+    } catch (SQLException e) {
+        throw new RuntimeException(e);
+    }
+}
+    public void eliminarCuenta(int cuenta) {
     try {
         conexion.setQuerySQL(conexion.conexionDB().createStatement());
 
@@ -108,9 +134,9 @@ public class CuentaPersistencia {
         conexion.conexionDB().close();
 
         if (rowCount > 0) {
-            return "La cuenta con ID " + cuenta + " ha sido eliminada correctamente.";
+            JOptionPane.showMessageDialog(null, "La cuenta ha sido eliminada con éxito.");
         } else {
-            return "No se encontró ninguna cuenta con ID " + cuenta + ". No se realizó ninguna eliminación.";
+            JOptionPane.showMessageDialog(null, "Ha ocurrido un error.");
         }
     } catch (SQLException e) {
         throw new RuntimeException(e);

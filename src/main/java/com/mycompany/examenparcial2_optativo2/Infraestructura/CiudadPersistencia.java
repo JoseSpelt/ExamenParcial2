@@ -32,16 +32,16 @@ public class CiudadPersistencia {
         }
     }
 
-    public String modificarCiudad(Ciudades ciudad){
+    public void modificarCiudad(Ciudades ciudad){
 
         try {
             conexion.setQuerySQL(conexion.conexionDB().createStatement());
             boolean execute = conexion.getQuerySQL().execute("UPDATE ciudad SET " +
                     "nombre_ciudad = '" + ciudad.NombreCiudad + "'," +
                     "departamento = '" + ciudad.Departamento + "'," +
-                    "codigo_postal = '" + ciudad.CodigoPostal + "' Where ciudad.id_ciudad = " + ciudad.id_ciudad);
+                    "codigo_postal = '" + ciudad.CodigoPostal + "' Where id_ciudad = " + ciudad.id_ciudad);
             conexion.conexionDB().close();
-            return "Los datos de la ciudad " + ciudad.NombreCiudad + " fue modificado correctamente!!!";
+            JOptionPane.showMessageDialog(null, "El cliente ha sido actualizada con éxito.");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -67,6 +67,25 @@ public class CiudadPersistencia {
     }
 
     return ciudades;
+}
+    public Ciudades consultarCiudadPorId(int idCiudad) {
+    try {
+        conexion.setQuerySQL(conexion.conexionDB().createStatement());
+        conexion.setResultadoQuery(conexion.getQuerySQL().executeQuery("SELECT * FROM ciudad WHERE id_ciudad = " + idCiudad));
+
+        if (conexion.getResultadoQuery().next()) {
+            Ciudades ciudad = new Ciudades();
+            ciudad.id_ciudad = conexion.getResultadoQuery().getInt("id_ciudad");
+            ciudad.NombreCiudad = conexion.getResultadoQuery().getString("nombre_ciudad");
+            ciudad.Departamento = conexion.getResultadoQuery().getString("departamento");
+            ciudad.CodigoPostal = conexion.getResultadoQuery().getString("codigo_postal");
+            return ciudad;
+        } else {
+            return null;  // Retorna null si no se encuentra la ciudad con el ID especificado.
+        }
+    } catch (SQLException e) {
+        throw new RuntimeException(e);
+    }
 }
     public String eliminarCiudad(int ciudad) {
     try {
