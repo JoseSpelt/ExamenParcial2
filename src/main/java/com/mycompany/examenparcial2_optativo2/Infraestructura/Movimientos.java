@@ -2,16 +2,25 @@
 package com.mycompany.examenparcial2_optativo2.Infraestructura;
 
 public class Movimientos {
-    public int id_movimiento;
-    public int id_cuenta;
-    public String FechaMovimiento;
-    public String TipoMovimiento;
-    public String SaldoAnterior;
-    public String SaldoActual;
-    public String MontoMovimiento;
-    public String CuentaOrigen;
-    public String Canal;
+    private int id_movimiento;
+    private int id_cuenta;
+    private String FechaMovimiento;
+    private String TipoMovimiento;
+    private String SaldoAnterior;
+    private String SaldoActual;
+    private String MontoMovimiento;
+    private String CuentaOrigen;
+    private String Canal;
 
+    public int getId_movimiento() {
+        return id_movimiento;
+    }
+
+    public void setId_movimiento(int id_movimiento) {
+        this.id_movimiento = id_movimiento;
+    }
+
+    
     public int getId_cuenta() {
         return id_cuenta;
     }

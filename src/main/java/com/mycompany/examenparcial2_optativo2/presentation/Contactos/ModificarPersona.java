@@ -8,7 +8,6 @@ package com.mycompany.examenparcial2_optativo2.presentation.Contactos;
 import com.mycompany.examenparcial2_optativo2.Infraestructura.Personas;
 import com.mycompany.examenparcial2_optativo2.Servicios.Persona;
 import java.awt.Color;
-import javax.swing.JOptionPane;
 
 /**
  *
