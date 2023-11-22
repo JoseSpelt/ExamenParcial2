@@ -3,11 +3,11 @@ package com.mycompany.examenparcial2_optativo2.Infraestructura;
 
 
 public class Clientes {
-    public int id_cliente;
-    public int id_persona;
-    public String FechaIngreso;
-    public String Calificacion;
-    public String estado;
+    private int id_cliente;
+    private int id_persona;
+    private String FechaIngreso;
+    private String Calificacion;
+    private String estado;
 
     public int getId_cliente() {
         return id_cliente;

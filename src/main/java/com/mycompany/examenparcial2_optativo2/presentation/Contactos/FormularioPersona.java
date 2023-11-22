@@ -296,25 +296,25 @@ public class FormularioPersona extends javax.swing.JFrame {
         String textidCiudad = txtCiudad.getText();
         int idciudad = Integer.parseInt(textidCiudad);
 
-        persona6.Nombre = txtNombre.getText();
+        persona6.setNombre(txtNombre.getText());
 
-        persona6.id_ciudad = idciudad;
-        persona6.Apellido = txtApellido.getText();
+        persona6.setId_ciudad(idciudad);
+        persona6.setApellido(txtApellido.getText());
 
         Object seleccionTipoDocumento = comboBoxTipoDocumento.getSelectedItem();
         String documentoSeleccionada = seleccionTipoDocumento.toString();
-        persona6.TipoDocumento = documentoSeleccionada;
+        persona6.setTipoDocumento(documentoSeleccionada);
 
-        persona6.NroDocumento = txtDocumento.getText();
+        persona6.setNroDocumento(txtDocumento.getText());
 
-        persona6.Direccion = txtDireccion.getText();
+        persona6.setDireccion(txtDireccion.getText());
 
-        persona6.Celular = txtCelular.getText();
+        persona6.setCelular(txtCelular.getText());
 
-        persona6.Email = txtEmail.getText();
+        persona6.setEmail(txtEmail.getText());
         Object seleccionEstado = comboBoxEstado.getSelectedItem();
         String estadoSeleccionada = seleccionEstado.toString();
-        persona6.estado = estadoSeleccionada;
+        persona6.setEstado(estadoSeleccionada);
         persona_persistencia.registrarPersona(persona6);
         //limpia los campos cuando el registro es exitoso
         txtCiudad.setText("");

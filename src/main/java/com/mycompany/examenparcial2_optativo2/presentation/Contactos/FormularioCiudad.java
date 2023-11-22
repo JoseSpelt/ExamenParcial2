@@ -171,9 +171,9 @@ public class FormularioCiudad extends javax.swing.JFrame {
         Ciudades ciudad = new Ciudades();
 
 
-        ciudad.NombreCiudad = nombreCiudad.getText();
-        ciudad.Departamento = departamento.getText();
-        ciudad.CodigoPostal = codigoPostal.getText();
+        ciudad.setNombreCiudad(nombreCiudad.getText());
+        ciudad.setDepartamento(departamento.getText());
+        ciudad.setCodigoPostal(codigoPostal.getText());
         ciudad_persistencia.registrarCiudad(ciudad);
         //limpia los campos cuando el registro es exitoso
         nombreCiudad.setText("");

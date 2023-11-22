@@ -31,11 +31,11 @@ public class ModificarCliente extends javax.swing.JFrame {
         
     }
     private void cargarDatos(Clientes model){
-        idCliente.setText(String.valueOf(model.id_cliente));
-        idPersona.setText(String.valueOf(model.id_persona));
-        fechaIngreso.setText(model.FechaIngreso);
-        calificacion.setText(model.Calificacion);
-        estado.setText(model.estado);
+        idCliente.setText(String.valueOf(model.getId_cliente()));
+        idPersona.setText(String.valueOf(model.getId_persona()));
+        fechaIngreso.setText(model.getFechaIngreso());
+        calificacion.setText(model.getCalificacion());
+        estado.setText(model.getEstado());
     }
 
     /**

@@ -3,17 +3,17 @@ package com.mycompany.examenparcial2_optativo2.Infraestructura;
 
 
 public class Cuentas {
-    public int id_cuenta;
-    public int id_cliente;
-    public String NumeroCuenta;
-    public String FechaAlta;
-    public String TipoCuenta;
-    public String estado;
-    public String Saldo;
-    public String NumeroContrato;
-    public String CostoMantenimiento;
-    public String PromedioAcreditacion;
-    public String Moneda;
+    private int id_cuenta;
+    private int id_cliente;
+    private String NumeroCuenta;
+    private String FechaAlta;
+    private String TipoCuenta;
+    private String estado;
+    private String Saldo;
+    private String NumeroContrato;
+    private String CostoMantenimiento;
+    private String PromedioAcreditacion;
+    private String Moneda;
 
     public int getId_cuenta() {
         return id_cuenta;

@@ -2,16 +2,16 @@
 package com.mycompany.examenparcial2_optativo2.Infraestructura;
 
 public class Personas {
-    public int id_persona;
-    public int id_ciudad;
-    public String Nombre;
-    public String Apellido;
-    public String TipoDocumento;
-    public String NroDocumento;
-    public String Direccion;
-    public String Celular;
-    public String Email;
-    public String estado;
+    private int id_persona;
+    private int id_ciudad;
+    private String Nombre;
+    private String Apellido;
+    private String TipoDocumento;
+    private String NroDocumento;
+    private String Direccion;
+    private String Celular;
+    private String Email;
+    private String estado;
 
     public int getId_persona() {
         return id_persona;

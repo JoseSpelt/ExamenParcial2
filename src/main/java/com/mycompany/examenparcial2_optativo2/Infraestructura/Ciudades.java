@@ -3,10 +3,10 @@ package com.mycompany.examenparcial2_optativo2.Infraestructura;
 
 
 public class Ciudades {
-    public int id_ciudad;
-    public String NombreCiudad;
-    public String Departamento;
-    public String CodigoPostal;
+    private int id_ciudad;
+    private String NombreCiudad;
+    private String Departamento;
+    private String CodigoPostal;
 
     public int getId_ciudad() {
         return id_ciudad;

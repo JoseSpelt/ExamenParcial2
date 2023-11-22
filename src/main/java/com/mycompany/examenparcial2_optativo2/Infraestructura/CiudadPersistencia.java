@@ -22,9 +22,9 @@ public class CiudadPersistencia {
                     "departamento, " +
                     "codigo_postal) " +
                     "values('" +
-                    ciudad.NombreCiudad + "', '" +
-                    ciudad.Departamento + "', '" +
-                    ciudad.CodigoPostal + "')");
+                    ciudad.getNombreCiudad() + "', '" +
+                    ciudad.getDepartamento() + "', '" +
+                    ciudad.getCodigoPostal() + "')");
             conexion.conexionDB().close();
             JOptionPane.showMessageDialog(null, "Registro Exitoso", "Éxito", JOptionPane.INFORMATION_MESSAGE);
         } catch (SQLException e) {
@@ -37,9 +37,9 @@ public class CiudadPersistencia {
         try {
             conexion.setQuerySQL(conexion.conexionDB().createStatement());
             boolean execute = conexion.getQuerySQL().execute("UPDATE ciudad SET " +
-                    "nombre_ciudad = '" + ciudad.NombreCiudad + "'," +
-                    "departamento = '" + ciudad.Departamento + "'," +
-                    "codigo_postal = '" + ciudad.CodigoPostal + "' Where id_ciudad = " + ciudad.id_ciudad);
+                    "nombre_ciudad = '" + ciudad.getNombreCiudad() + "'," +
+                    "departamento = '" + ciudad.getDepartamento() + "'," +
+                    "codigo_postal = '" + ciudad.getCodigoPostal()+ "' Where id_ciudad = " + ciudad.getId_ciudad());
             conexion.conexionDB().close();
             JOptionPane.showMessageDialog(null, "El cliente ha sido actualizada con éxito.");
         } catch (SQLException e) {
@@ -56,11 +56,12 @@ public class CiudadPersistencia {
 
         while (conexion.getResultadoQuery().next()) {
             Ciudades ciudad = new Ciudades();
-            ciudad.id_ciudad = conexion.getResultadoQuery().getInt("id_ciudad");
-            ciudad.NombreCiudad = conexion.getResultadoQuery().getString("nombre_ciudad");
-            ciudad.Departamento = conexion.getResultadoQuery().getString("departamento");
-            ciudad.CodigoPostal = conexion.getResultadoQuery().getString("codigo_postal");
-            ciudades.add(ciudad);
+           ciudad.setId_ciudad(conexion.getResultadoQuery().getInt("id_ciudad"));
+           ciudad.setNombreCiudad(conexion.getResultadoQuery().getString("nombre_ciudad"));
+           ciudad.setDepartamento(conexion.getResultadoQuery().getString("departamento"));
+           ciudad.setCodigoPostal(conexion.getResultadoQuery().getString("codigo_postal"));
+           ciudades.add(ciudad);
+
         }
     } catch (SQLException e) {
         throw new RuntimeException(e);
@@ -75,10 +76,10 @@ public class CiudadPersistencia {
 
         if (conexion.getResultadoQuery().next()) {
             Ciudades ciudad = new Ciudades();
-            ciudad.id_ciudad = conexion.getResultadoQuery().getInt("id_ciudad");
-            ciudad.NombreCiudad = conexion.getResultadoQuery().getString("nombre_ciudad");
-            ciudad.Departamento = conexion.getResultadoQuery().getString("departamento");
-            ciudad.CodigoPostal = conexion.getResultadoQuery().getString("codigo_postal");
+            ciudad.setId_ciudad(conexion.getResultadoQuery().getInt("id_ciudad"));
+            ciudad.setNombreCiudad(conexion.getResultadoQuery().getString("nombre_ciudad"));
+            ciudad.setDepartamento(conexion.getResultadoQuery().getString("departamento"));
+            ciudad.setCodigoPostal(conexion.getResultadoQuery().getString("codigo_postal"));
             return ciudad;
         } else {
             return null;  // Retorna null si no se encuentra la ciudad con el ID especificado.

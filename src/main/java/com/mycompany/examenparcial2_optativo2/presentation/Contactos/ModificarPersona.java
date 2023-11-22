@@ -40,15 +40,15 @@ public class ModificarPersona extends javax.swing.JFrame {
     }
     
     private void cargarDatos(Personas model){
-        txtidPersona.setText(String.valueOf(model.id_persona));
-        txtNombre.setText(model.Nombre);
-        txtApellido.setText(model.Apellido);
-        comboBoxTipoDocumento.setSelectedItem(model.TipoDocumento);
-        txtDocumento.setText(model.NroDocumento);
-        txtDireccion.setText(model.Direccion);
-        txtEmail.setText(model.Email);
-        txtCelular.setText(model.Celular);
-        comboBoxEstado.setSelectedItem(model.estado);
+        txtidPersona.setText(String.valueOf(model.getId_persona()));
+        txtNombre.setText(model.getNombre());
+        txtApellido.setText(model.getApellido());
+        comboBoxTipoDocumento.setSelectedItem(model.getTipoDocumento());
+        txtDocumento.setText(model.getNroDocumento());
+        txtDireccion.setText(model.getDireccion());
+        txtEmail.setText(model.getEmail());
+        txtCelular.setText(model.getCelular());
+        comboBoxEstado.setSelectedItem(model.getEstado());
     }
 
     /**

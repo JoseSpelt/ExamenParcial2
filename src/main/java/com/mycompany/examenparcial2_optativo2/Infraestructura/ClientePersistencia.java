@@ -24,10 +24,10 @@ public class ClientePersistencia {
                     "calificacion, " +
                     "estado) " +
                     "values('" +
-                    cliente.id_persona + "', '" +
-                    cliente.FechaIngreso + "', '" +
-                    cliente.Calificacion + "', '" +
-                    cliente.estado + "')");
+                    cliente.getId_persona() + "', '" +
+                    cliente.getFechaIngreso() + "', '" +
+                    cliente.getCalificacion() + "', '" +
+                    cliente.getEstado() + "')");
             conexion.conexionDB().close();
             JOptionPane.showMessageDialog(null, "Registro Exitoso", "Éxito", JOptionPane.INFORMATION_MESSAGE);
         } catch (SQLException e) {
@@ -40,10 +40,10 @@ public class ClientePersistencia {
         try {
             conexion.setQuerySQL(conexion.conexionDB().createStatement());
             boolean execute = conexion.getQuerySQL().execute("UPDATE cliente SET " +
-                    "id_persona = '" + cliente.id_persona + "'," +
-                    "fecha_ingreso = '" + cliente.FechaIngreso + "'," +
-                    "calificacion = '" + cliente.Calificacion +  "'," +
-                    "estado = '" + cliente.estado + "' Where id_cliente = " + cliente.id_cliente);
+                    "id_persona = '" + cliente.getId_persona() + "'," +
+                    "fecha_ingreso = '" + cliente.getFechaIngreso() + "'," +
+                    "calificacion = '" + cliente.getCalificacion() +  "'," +
+                    "estado = '" + cliente.getEstado() + "' Where id_cliente = " + cliente.getId_cliente());
             conexion.conexionDB().close();
             JOptionPane.showMessageDialog(null, "El cliente ha sido actualizada con éxito.");
         } catch (SQLException e) {
@@ -60,13 +60,11 @@ public class ClientePersistencia {
 
         while (conexion.getResultadoQuery().next()) {
             Clientes cliente = new Clientes();
-            cliente.id_cliente = conexion.getResultadoQuery().getInt("id_cliente");
-            cliente.id_persona = conexion.getResultadoQuery().getInt("id_persona");
-            cliente.FechaIngreso = conexion.getResultadoQuery().getString("fecha_ingreso");
-            cliente.Calificacion = conexion.getResultadoQuery().getString("calificacion");
-            cliente.estado = conexion.getResultadoQuery().getString("estado");
-
-
+            cliente.setId_cliente(conexion.getResultadoQuery().getInt("id_cliente"));
+            cliente.setId_persona(conexion.getResultadoQuery().getInt("id_persona")); 
+            cliente.setFechaIngreso(conexion.getResultadoQuery().getString("fecha_ingreso")); 
+            cliente.setCalificacion(conexion.getResultadoQuery().getString("calificacion"));
+            cliente.setEstado(conexion.getResultadoQuery().getString("estado"));
             clientes.add(cliente);
         }
     } catch (SQLException e) {
@@ -82,11 +80,11 @@ public class ClientePersistencia {
 
         if (conexion.getResultadoQuery().next()) {
             Clientes cliente = new Clientes();
-            cliente.id_cliente = conexion.getResultadoQuery().getInt("id_cliente");
-            cliente.id_persona = conexion.getResultadoQuery().getInt("id_persona");
-            cliente.FechaIngreso = conexion.getResultadoQuery().getString("fecha_ingreso");
-            cliente.Calificacion = conexion.getResultadoQuery().getString("calificacion");
-            cliente.estado = conexion.getResultadoQuery().getString("estado");
+            cliente.setId_cliente(conexion.getResultadoQuery().getInt("id_cliente"));
+            cliente.setId_persona(conexion.getResultadoQuery().getInt("id_persona"));
+            cliente.setFechaIngreso(conexion.getResultadoQuery().getString("fecha_ingreso"));
+            cliente.setCalificacion(conexion.getResultadoQuery().getString("calificacion"));
+            cliente.setEstado(conexion.getResultadoQuery().getString("estado"));
 
             return cliente;
         } else {

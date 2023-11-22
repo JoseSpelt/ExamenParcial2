@@ -33,17 +33,17 @@ public class ModificarCuenta extends javax.swing.JFrame {
     }
     
     private void cargarDatos(Cuentas model){
-        idCuenta.setText(String.valueOf(model.id_cuenta));
-        idCliente.setText(String.valueOf(model.id_cliente));
-        nroCuenta.setText(model.NumeroCuenta);
-        tipoCuenta.setText(model.TipoCuenta);
-        nroContrato.setText(model.NumeroContrato);
-        fechaAlta.setText(model.FechaAlta);
-        estado.setText(model.estado);
-        saldo.setText(model.Saldo);
-        moneda.setText(model.Moneda);
-        promAcreditacion.setText(model.PromedioAcreditacion);
-        costoMante.setText(model.CostoMantenimiento);
+        idCuenta.setText(String.valueOf(model.getId_cuenta()));
+        idCliente.setText(String.valueOf(model.getId_cliente()));
+        nroCuenta.setText(model.getNumeroCuenta());
+        tipoCuenta.setText(model.getTipoCuenta());
+        nroContrato.setText(model.getNumeroCuenta());
+        fechaAlta.setText(model.getFechaAlta());
+        estado.setText(model.getEstado());
+        saldo.setText(model.getSaldo());
+        moneda.setText(model.getMoneda());
+        promAcreditacion.setText(model.getPromedioAcreditacion());
+        costoMante.setText(model.getCostoMantenimiento());
     }
 
     /**

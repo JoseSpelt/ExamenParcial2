@@ -262,16 +262,16 @@ public class FormularioCuenta extends javax.swing.JFrame {
 
         String txtid = idCliente.getText();
         int idCuentaCliente = Integer.parseInt(txtid);
-        cuenta.id_cliente = idCuentaCliente;
-        cuenta.NumeroCuenta = nroCuenta.getText();
-        cuenta.TipoCuenta = tipoCuenta.getText();
-        cuenta.NumeroContrato = nroContrato.getText();
-        cuenta.FechaAlta = fechaAlta.getText();
-        cuenta.estado = estado.getText();
-        cuenta.Saldo = saldo.getText();
-        cuenta.Moneda = moneda.getText();
-        cuenta.PromedioAcreditacion = promAcreditacion.getText();
-        cuenta.CostoMantenimiento = costoMantenimiento.getText();
+        cuenta.setId_cuenta(idCuentaCliente);
+        cuenta.setNumeroCuenta(nroCuenta.getText());
+        cuenta.setTipoCuenta(tipoCuenta.getText());
+        cuenta.setNumeroContrato(nroContrato.getText());
+        cuenta.setFechaAlta(fechaAlta.getText());
+        cuenta.setEstado(estado.getText());
+        cuenta.setSaldo(saldo.getText());
+        cuenta.setMoneda(moneda.getText());
+        cuenta.setPromedioAcreditacion(promAcreditacion.getText());
+        cuenta.setCostoMantenimiento(costoMantenimiento.getText());
         cuenta_persistencia.registrarCuenta(cuenta);
         //limpia los campos cuando el registro es exitoso
         idCliente.setText("");

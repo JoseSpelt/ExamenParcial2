@@ -30,10 +30,10 @@ public class ModificarCiudad extends javax.swing.JFrame {
         }
     }
         private void cargarDatos(Ciudades model){
-        txtidCiudad.setText(String.valueOf(model.id_ciudad));
-        nombreCiudad.setText(String.valueOf(model.NombreCiudad));
-        departamento.setText(model.Departamento);
-        codigoPostal.setText(model.CodigoPostal);
+        txtidCiudad.setText(String.valueOf(model.getId_ciudad()));
+        nombreCiudad.setText(model.getNombreCiudad());
+        departamento.setText(model.getDepartamento());
+        codigoPostal.setText(model.getCodigoPostal());
     }
 
     /**

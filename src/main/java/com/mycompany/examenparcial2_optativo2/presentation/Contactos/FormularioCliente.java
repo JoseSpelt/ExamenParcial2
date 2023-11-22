@@ -222,17 +222,16 @@ public class FormularioCliente extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         Cliente cliente_persistencia = new Cliente("postgres", "Invocador1998", "localhost", "5432", "Parcial 1");
-        // este bloque de codigo ingresa un registro nuevo en la tabla personas
 
         Clientes cliente = new Clientes();
 
 
         String txtid = this.idPersona.getText();
         int idPersonaCliente = Integer.parseInt(txtid);
-        cliente.id_persona = idPersonaCliente;
-        cliente.FechaIngreso = fechaIngreso.getText();
-        cliente.Calificacion = calificacion.getText();
-        cliente.estado = estado.getText();
+        cliente.setId_persona(idPersonaCliente);
+        cliente.setFechaIngreso(fechaIngreso.getText());
+        cliente.setCalificacion(calificacion.getText()); 
+        cliente.setEstado(estado.getText()); 
         cliente_persistencia.registrarCliente(cliente);
         //limpia los campos cuando el registro es exitoso
         idPersona.setText("");
